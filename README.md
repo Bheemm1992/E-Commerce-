@@ -1,82 +1,116 @@
-E-Commerce Web Application
+# E-Commerce Web Application
 
-Table of Contents
-Project Description
-Features
-Tech Stack
-Getting Started
-Contributing
-License
-Contact
-Project Description
-This E-Commerce Web Application provides an online platform for users to browse, purchase products, and manage their orders seamlessly. The application is built using a modern tech stack with a focus on performance, scalability, and user experience.
+This project is a backend implementation of an e-commerce web application built using the Java Spring Boot framework. The application allows users to retrieve product information from a database and enables sellers to update product details.
 
-The platform offers a range of functionalities including product catalog management, secure user authentication, and order processing.
+## Features
 
-Features
-User Authentication: Secure login and registration for customers.
-Product Catalog: Browse and search through a range of products.
-Order Management: Add items to the cart and manage orders efficiently.
-Payment Gateway: Integration with a secure payment system (future plan).
-Admin Dashboard: Manage products, view orders, and monitor platform performance.
-Tech Stack
-Backend: Java, Spring Boot
-Frontend: React.js, HTML, CSS, JavaScript
-Database: MongoDB
-Others: REST APIs, JWT for authentication
-Getting Started
-Prerequisites
-Java 8 or higher
-Node.js
-MongoDB installed locally or in the cloud
-Setup
-Backend
-Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-username/ecommerce-web-application.git
-cd ecommerce-web-application
-Set up the backend:
-bash
-Copy code
-cd backend
-mvn clean install
-mvn spring-boot:run
-Frontend
-Navigate to the frontend directory and install dependencies:
+- Retrieve a list of products available in the database.
+- Sellers can update the details of a specific product.
+- Backend services that handle CRUD operations for product management.
 
-bash
-Copy code
-cd frontend
-npm install
-npm start
-Open your browser at http://localhost:3000.
+## Technologies Used
 
-Environment Variables
-Ensure the following environment variables are set up for your project:
+- **Java Spring Boot**: Framework for building the backend REST API.
+- **PostgreSQL**: Database system used to store product details.
+- **Hibernate**: Object-Relational Mapping (ORM) framework to map Java objects to database tables.
+- **Apache Tomcat**: Server for hosting and running the application.
+- **Lombok**: Used to reduce boilerplate code.
+- **Maven**: Dependency management tool for managing external libraries.
 
-MONGODB_URI: MongoDB connection string
-JWT_SECRET: Secret key for JSON Web Token
-Contributing
-We welcome contributions from the open-source community to make this project even better! To get started, please read our Contributing Guidelines.
+## Project Structure
 
-How to Contribute
-Fork the repository.
-Create a feature branch:
-bash
-Copy code
-git checkout -b feature/new-feature
-Commit your changes:
-bash
-Copy code
-git commit -m "Add new feature"
-Push your branch:
-bash
-Copy code
-git push origin feature/new-feature
-Submit a pull request and explain your changes.
-Reporting Issues
-If you encounter bugs or have any suggestions, please create an issue in the repository. Make sure to include steps to reproduce the issue, relevant logs, and expected behavior.
+```
+├── SpringEcom               # Main project directory
+│   ├── controller            # Contains the controllers for handling HTTP requests
+│   │   └── ProductController.java  # Handles product-related requests
+│   ├── model                 # Contains the data model classes
+│   │   └── Product.java       # Product entity class
+│   ├── repo                  # Repository layer for database interactions
+│   │   └── ProductRepo.java   # Repository interface for product data
+│   ├── service               # Contains the service layer business logic
+│   │   └── ProductService.java # Service class for product operations
+│   └── SpringEcomApplication.java # Main entry point of the application
+├── README.md                 # Project documentation
+```
+
+## Setup Instructions
+
+### Prerequisites
+
+- Java 11 or higher
+- PostgreSQL (with a running instance)
+- Maven 3.6.x or higher
+- Apache Tomcat (optional, if not using embedded server)
+
+### Database Setup
+
+1. Install PostgreSQL and create a new database for the project.
+   
+2. Update the `application.properties` file to configure the database connection.
+
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/<your-database-name>
+   spring.datasource.username=<your-username>
+   spring.datasource.password=<your-password>
+   spring.jpa.hibernate.ddl-auto=update
+   ```
+
+### Build and Run
+
+1. Clone the repository to your local machine:
+   
+   ```bash
+   git clone <repository-url>
+   cd E-commerce-web-Application-main
+   ```
+
+2. Build the project using Maven:
+
+   ```bash
+   mvn clean install
+   ```
+
+3. Run the Spring Boot application:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+   The application should now be running at `http://localhost:8080`.
+
+### API Endpoints
+
+The application exposes the following REST API endpoints:
+
+- **GET /products**: Retrieve a list of products.
+- **GET /products/{id}**: Retrieve product details by product ID.
+- **POST /products**: Add a new product (Seller only).
+- **PUT /products/{id}**: Update an existing product (Seller only).
+- **DELETE /products/{id}**: Delete a product by ID (Seller only).
+
+### Lombok Configuration
+
+This project uses Lombok annotations to reduce boilerplate code. Make sure to install Lombok in your IDE:
+
+- For **Eclipse**, install the Lombok plugin from the Eclipse Marketplace.
+- For **IntelliJ IDEA**, enable annotation processing under `Preferences > Build, Execution, Deployment > Compiler > Annotation Processors`.
+
+### Running Tests
+
+To run the unit tests, use the following command:
+
+```bash
+mvn test
+```
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues or pull requests.
+
+## License
+
+This project is licensed under the MIT License.
+
 
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
