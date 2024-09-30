@@ -82,5 +82,5 @@ License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 Contact
-If you have any questions or would like to reach out, feel free to email me at your-email@example.com or connect with me on LinkedIn.
+If you have any questions or would like to reach out, feel free to email me at bheemhepte@gmail.com or connect with me on LinkedIn.
 
