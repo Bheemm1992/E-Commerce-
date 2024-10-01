@@ -34,19 +34,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/product")
-    public ResponseEntity<?> addProduct(@RequestPart Product product,@RequestPart MultipartFile imageFile){
-
-        Product savedProduct= null;
-        try {
-            savedProduct = productService.addOrUpdateProduct(product,imageFile);
-            return  new ResponseEntity<>(savedProduct,HttpStatus.CREATED);
-        } catch (IOException e) {
-
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
+    
 
     @GetMapping("/product/{productId}/image")
     public ResponseEntity<byte[]> getImageByProductId(@PathVariable int productId){
