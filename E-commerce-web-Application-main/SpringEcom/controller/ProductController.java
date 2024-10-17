@@ -27,6 +27,14 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id){
         Product product=productService.getProductById(id);
+        public Product addOrUpdateProduct(Product product, MultipartFile image) throws IOException {
+        product.setImageName(image.getOriginalFilename());
+        product.setImageType(image.getContentType());
+        product.setImageData(image.getBytes());
+         Product product=productService.getProductById(id);
+        return productRepo.save(product);
+    }
+
 
         if(product.getId()>0)
             return new ResponseEntity<>(product, HttpStatus.OK);
